@@ -21,11 +21,10 @@
                             <!-- name -->
                             <div class="row">
                                 <div class="col-lg-12  mb-4">
-                                    <label for="Name"> Product Name</label>
                                     <input id=" Name" #prdname="ngModel" [(ngModel)]=" prd.name" name="Name"
-                                        class="form-control form-control-lg fs-6 " type="text"
+                                        class="form-control form-control-lg fs-6 shadow-none " type="text"
                                         placeholder="Enter Your  Product  Name" required>
-                                    <div [hidden]='prdname.valid || prdname.untouched' class="alert alert-danger">
+                                    <div [hidden]='prdname.valid || prdname.untouched' class=" fw-bold text-danger">
                                         Product Name is
                                         required</div>
                                 </div>
@@ -34,45 +33,61 @@
                             <!-- price -->
                             <div class="row">
                                 <div class="col-lg-12  mb-4">
-                                    <label for="Price"> Product Price</label>
                                     <input id=" Price" [(ngModel)]=" prd.price" name=" Price"
-                                        class="form-control form-control-lg fs-6 " type="number"
+                                        class="form-control form-control-lg fs-6  shadow-none" type="number"
                                         placeholder="Enter Your  Product Price" #prdprice="ngModel" required>
-                                    <div [hidden]='prdprice.valid || prdprice.untouched' class="alert alert-danger">
+                                    <div [hidden]='prdprice.valid || prdprice.untouched' class="fw-bold text-danger">
                                         Product Price
                                         is required</div>
                                 </div>
                             </div>
 
 
-                            <!-- name -->
+                            <!-- company -->
                             <div class="row">
                                 <div class="col-lg-12  mb-4">
-                                    <label for="company"> Product Company</label>
                                     <input id=" company" #prdcompany="ngModel" [(ngModel)]=" prd.company" name="Name"
-                                        class="form-control form-control-lg fs-6 " type="text" placeholder="Enter Your  Product  company" required>
-                                    <div [hidden]='prdcompany.valid || prdcompany.untouched' class="alert alert-danger">
-                                        Product Name is
+                                        class="form-control form-control-lg fs-6 shadow-none " type="text" placeholder="Enter Your  Product  company" required>
+                                    <div [hidden]='prdcompany.valid || prdcompany.untouched' class="fw-bold text-danger">
+                                        Product company is
                                         required</div>
                                 </div>
                             </div>
+                         
 
 
 
                             <!--  description -->
                             <div class="row">
                                 <div class="col-lg-12  mb-4">
-                                    <label for="description"> Product Description</label>
+                                    <label>Description</label>
                                     <textarea id=" " [(ngModel)]=" prd.description" name="description"
-                                        class="form-control form-control-lg fs-6 " 
-                                        placeholder="Enter Your  Product description" #prddescription="ngModel"
+                                        class="form-control form-control-lg fs-6  shadow-none" 
+                                         #prddescription="ngModel"
                                        > </textarea>
                                     <div [hidden]='prddescription.valid || prddescription.untouched'
-                                        class="alert alert-danger"> Product
+                                        class="fw-bold text-danger"> Product
                                         description is required</div>
                                 </div>
                             </div>
 
+                            <!-- image -->
+                            <div class="row">
+                                <div class="col-lg-12  mb-4">
+                                    <input accept="image/*"  id=" image" #imageInput="ngModel" [(ngModel)]=" prd.image" name="image"
+                                        class="form-control form-control-lg fs-6 shadow-none " type="file"
+                                                          (change)="processFile(imageInput)"
+
+                                        placeholder="Enter Your  Product  image" required>
+                                    <div [hidden]='imageInput.valid || imageInput.untouched' class="fw-bold text-danger">
+                                        Product image is
+                                        required</div>
+                                </div>
+                            </div>
+
+
+                            <!-- test -->
+                            <!-- test -->
 
 
                             <!-- product Image -->
@@ -97,9 +112,8 @@ name="catID" id=" " [(ngModel)]=" prd.Categoryid">
 
                             <div class="row">
                                 <div class="col-lg-12  mb-4">
-                                    <label for="catID"> Product category</label>
                                     <input name="" id=" " [(ngModel)]=" prd.category"
-                                        class="form-control form-control-lg fs-6 " type="text"
+                                        class="form-control form-control-lg fs-6 shadow-none " type="text"
                                         placeholder="Enter Your  Product category">
                                 </div>
                             </div>

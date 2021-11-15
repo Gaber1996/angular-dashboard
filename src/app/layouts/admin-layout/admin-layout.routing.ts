@@ -1,5 +1,4 @@
 import { Routes } from "@angular/router";
-
 import { DashboardComponent } from "../../dashboard/dashboard.component";
 import { UserProfileComponent } from "../../user-profile/user-profile.component";
 import { TableListComponent } from "../../table-list/table-list.component";
@@ -8,6 +7,7 @@ import { AddProductComponent } from "app/add-product/add-product.component";
 import { EditproductComponent } from "app/editproduct/editproduct.component";
 import { LoginComponent } from "app/login/login.component";
 import { AuthenticationGuard } from "app/guard/authentication.guard";
+import { LoginguardGuard } from "app/guard/loginguard.guard";
 
 export const AdminLayoutRoutes: Routes = [
   // {
@@ -53,7 +53,7 @@ export const AdminLayoutRoutes: Routes = [
   //     }]
   // }
   { path: "dashboard", component: DashboardComponent ,canActivate: [AuthenticationGuard] },
-  { path: "login", component: LoginComponent  ,canActivate: [AuthenticationGuard] },
+  { path: "login", component: LoginComponent  ,canActivate: [LoginguardGuard] },
   { path: "user-profile", component: UserProfileComponent  ,canActivate: [AuthenticationGuard] },
   { path: "table-list", component: TableListComponent  ,canActivate: [AuthenticationGuard] },
   { path: "addproduct", component: AddProductComponent ,canActivate: [AuthenticationGuard] },

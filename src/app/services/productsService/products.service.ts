@@ -10,12 +10,21 @@ import { Observable } from "rxjs";
 export class ProductsService {
   //constructor
   private httpOptions = {};
+  private httpOptions1 = {};
   constructor(private httpClient: HttpClient) {
     this.httpOptions = {
       headers: new HttpHeaders({
         "Content-Type": "application/json",
         authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiamFzbWluIiwidXNlcklkIjoiNjE4YzBkZmZhZThhYzM2MTUyNjY4ZGZhIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjM2ODI5ODEwLCJleHAiOjE2MzY5MTYyMTB9.oA3WoD9bE73Q_dr_HYyhj7OJrNNS4KepUJExOpG6BUg",
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiamFzbWluIiwidXNlcklkIjoiNjE4YzBkZmZhZThhYzM2MTUyNjY4ZGZhIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjM2OTk0ODIyLCJleHAiOjE2MzcwODEyMjJ9.QL6Uqx8RrPt8EtpqnotXTJtWcGZc0ZrB2goZ4I6-Dz0",
+      }),
+    };
+
+    this.httpOptions1 = {
+      headers: new HttpHeaders({
+        "Content-Type": ["image/jpeg", "image/png", "image/jpg", "image/ief"],
+        authorization:
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiamFzbWluIiwidXNlcklkIjoiNjE4YzBkZmZhZThhYzM2MTUyNjY4ZGZhIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjM2OTk0ODIyLCJleHAiOjE2MzcwODEyMjJ9.QL6Uqx8RrPt8EtpqnotXTJtWcGZc0ZrB2goZ4I6-Dz0",
       }),
     };
   }
@@ -65,4 +74,15 @@ export class ProductsService {
     );
   }
 
+  upload(body: File): Observable<any> {
+    console.log("body", body);
+    const formData = new FormData();
+    formData.append("image", body);
+
+    return this.httpClient.post(
+      ` ${environment.APIURL}/products/uploadImage`,
+      formData,
+      this.httpOptions1
+    );
+  }
 }

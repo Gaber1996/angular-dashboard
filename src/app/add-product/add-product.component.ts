@@ -1,3 +1,8 @@
+class ImageSnippet {
+  constructor(public src: string, public file: File) {}
+}
+
+
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { Iproduct } from "app/Models/product/iproduct";
@@ -10,6 +15,8 @@ import { ProductsService } from "app/services/productsService/products.service";
 })
 export class AddProductComponent implements OnInit {
   prd: Iproduct;
+  public selectedFile: any;
+  selectedFile1!: ImageSnippet;
 
   constructor(
     private ProductsServiceApi: ProductsService,
@@ -20,14 +27,13 @@ export class AddProductComponent implements OnInit {
 
     this.prd = {
       name: "",
-      price: 0,
+      price: null,
       description: " ",
-      // image:'';
+      image: "",
       category: "",
       company: [],
       // colors: [];
     };
-
   }
 
   AddProduct() {
@@ -49,5 +55,38 @@ export class AddProductComponent implements OnInit {
     );
   }
 
-  ngOnInit(): void {}
+  uploadfile(event) {
+    this.selectedFile = event.target;
+    console.log(this.selectedFile);
+    console.log(event.target.files[0].image);
+    return this.ProductsServiceApi.upload(this.selectedFile).subscribe(
+      (res) => {
+        console.log(JSON.stringify(res));
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
+
+ processFile(imageInput: any) {
+    const file: File = imageInput.files[0];
+    const reader = new FileReader();
+
+    reader.addEventListener('load', (event: any) => {
+
+      this.selectedFile1 = new ImageSnippet(event.target.result, file);
+
+      this.ProductsServiceApi.upload(this.selectedFile1.file).subscribe(
+        (res) => { },
+        (err) => {}
+      );
+    });
+
+    reader.readAsDataURL(file);
+  }
+
+
+  ngOnInit(): void { }
+  
 }

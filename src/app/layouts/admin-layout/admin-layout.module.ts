@@ -37,6 +37,7 @@ import { EditproductComponent } from 'app/editproduct/editproduct.component';
     AddProductComponent,
     EditproductComponent,
     MapsComponent,
+    
 
   ],
 })

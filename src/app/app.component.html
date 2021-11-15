@@ -1,4 +1,7 @@
 
+<!-- <div *ngIf="(router.url !== '/login')">
+    <notfound></notfound>
+</div> -->
 <div *ngIf="(router.url== '/login')else finish">
     <login></login>
 </div>

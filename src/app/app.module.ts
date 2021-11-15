@@ -16,7 +16,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from "@angular/material/form-field";
-
+import { NotfoundComponent } from './notfound/notfound.component';
 
 @NgModule({
   imports: [
@@ -41,7 +41,7 @@ import { MatFormFieldModule } from "@angular/material/form-field";
     MatCardModule,
     MatFormFieldModule,
   ],
-  declarations: [AppComponent, AdminLayoutComponent, LoginComponent],
+  declarations: [AppComponent, AdminLayoutComponent, LoginComponent, NotfoundComponent],
   providers: [],
   bootstrap: [AppComponent],
 })

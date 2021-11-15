@@ -22,7 +22,7 @@
                             <div class="row">
                                 <div class="col-lg-12  mb-4">
                                     <input id=" Name" #prdname="ngModel" [(ngModel)]=" prd.name" name="Name"
-                                        class="form-control form-control-lg fs-6 " type="text"
+                                        class="form-control form-control-lg fs-6 shadow-none " type="text"
                                         placeholder="Enter Your  Product  Name" required>
                                     <div [hidden]='prdname.valid || prdname.untouched' class="alert alert-danger">
                                         Product Name is
@@ -34,7 +34,7 @@
                             <div class="row">
                                 <div class="col-lg-12  mb-4">
                                     <input id=" Price" [(ngModel)]=" prd.price" name=" Price"
-                                        class="form-control form-control-lg fs-6 " type="number"
+                                        class="form-control form-control-lg fs-6 shadow-none " type="number"
                                         placeholder="Enter Your  Product Price" #prdprice="ngModel" required>
                                     <div [hidden]='prdprice.valid || prdprice.untouched' class="alert alert-danger">
                                         Product Price
@@ -47,7 +47,7 @@
                             <div class="row">
                                 <div class="col-lg-12  mb-4">
                                     <input id=" company" #prdcompany="ngModel" [(ngModel)]=" prd.company" name="Name"
-                                        class="form-control form-control-lg fs-6 " type="text"
+                                        class="form-control form-control-lg fs-6 shadow-none " type="text"
                                         placeholder="Enter Your  Product  company" required>
                                     <div [hidden]='prdcompany.valid || prdcompany.untouched' class="alert alert-danger">
                                         Product Name is
@@ -61,7 +61,7 @@
                             <div class="row">
                                 <div class="col-lg-12  mb-4">
                                     <textarea id=" " [(ngModel)]=" prd.description" name="description"
-                                        class="form-control form-control-lg fs-6 "
+                                        class="form-control form-control-lg fs-6 shadow-none "
                                         placeholder="Enter Your  Product description"
                                         #prddescription="ngModel"> </textarea>
                                     <div [hidden]='prddescription.valid || prddescription.untouched'
@@ -77,7 +77,7 @@
 <div class="col-lg-12  mb-4">
 <label for="imgURL"> Product Image</label>
 <input id="imgURL " [(ngModel)]=" prd.imgURL" name="imgURL"
-class="form-control form-control-lg fs-6 " type="text"
+class="form-control form-control-lg fs-6 shadow-none " type="text"
 placeholder="Enter Your  Product imgURL">
 </div>
 </div> -->
