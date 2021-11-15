@@ -14,13 +14,18 @@ export class ProductsService {
     this.httpOptions = {
       headers: new HttpHeaders({
         "Content-Type": "application/json",
+        authorization:
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiamFzbWluIiwidXNlcklkIjoiNjE4YzBkZmZhZThhYzM2MTUyNjY4ZGZhIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjM2ODI5ODEwLCJleHAiOjE2MzY5MTYyMTB9.oA3WoD9bE73Q_dr_HYyhj7OJrNNS4KepUJExOpG6BUg",
       }),
     };
   }
 
   // functions
   getAllProducts(): Observable<Iproduct> {
-    return this.httpClient.get<Iproduct>(environment.APIURL + "/products");
+    return this.httpClient.get<Iproduct>(
+      environment.APIURL + "/products",
+      this.httpOptions
+    );
   }
 
   // getCountProducts() {}
@@ -41,37 +46,23 @@ export class ProductsService {
     return this.httpClient.post<Iproduct>(
       `${environment.APIURL}/products`,
       newprd,
-      {
-        headers: new HttpHeaders({
-          "Content-Type": "application/json",
-          // 'utheoriztion 'token
-        }),
-      }
+      this.httpOptions
     );
   }
 
   DeleteProduct(id: number): Observable<{}> {
     return this.httpClient.delete<Iproduct>(
       `${environment.APIURL}/products/${id}`,
-      {
-        headers: new HttpHeaders({
-          "Content-Type": "application/json",
-          // 'utheoriztion 'token
-        }),
-      }
+      this.httpOptions
     );
   }
 
-  EditProduct(id: number, newprd: Iproduct): Observable<Iproduct> {
-    return this.httpClient.put<Iproduct>(
+  EditProduct(id: string, newprd: Iproduct): Observable<Iproduct> {
+    return this.httpClient.patch<Iproduct>(
       `${environment.APIURL}/products/${id}`,
       newprd,
-      {
-        headers: new HttpHeaders({
-          "Content-Type": "application/json",
-          // 'utheoriztion 'token
-        }),
-      }
+      this.httpOptions
     );
   }
+
 }

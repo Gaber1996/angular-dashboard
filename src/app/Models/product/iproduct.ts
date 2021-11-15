@@ -1,11 +1,11 @@
 export interface Iproduct {
-  _id: number;
+  _id?: number;
   name?: string;
   price?: number;
   description?: string;
   image?: string;
   category?: string;
-  company?: string;
+  company?: [];
   colors?: [];
   featured?: boolean;
   freeShipping?: boolean;

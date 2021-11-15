@@ -1,2 +1,7 @@
 
-<router-outlet></router-outlet>
+<div *ngIf="(router.url== '/login')else finish">
+    <login></login>
+</div>
+<ng-template #finish><router-outlet></router-outlet> </ng-template>
+
+<!-- <router-outlet></router-outlet> -->

@@ -4,21 +4,36 @@ import { BrowserModule  } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { HttpClientModule } from "@angular/common/http";
+import { LoginComponent } from './login/login.component';
+import { AuthenticationGuard } from './guard/authentication.guard';
 
 
-const routes: Routes =[
+const routes: Routes = [
+  // {
+  //   path: "",
+  //   redirectTo: "dashboard",
+  //   pathMatch: "full",
+  // },
   {
-    path: '',
-    redirectTo: 'dashboard',
-    pathMatch: 'full',
-  }, {
-    path: '',
+    path: "",
+    // redirectTo: "login",
+    // pathMatch: "full",
+
+    component: LoginComponent,
+  },
+  {
+    path: "",
     component: AdminLayoutComponent,
-    children: [{
-      path: '',
-      loadChildren: () => import('./layouts/admin-layout/admin-layout.module').then(m => m.AdminLayoutModule)
-    }]
-  }
+    children: [
+      {
+        path: "",
+        loadChildren: () =>
+          import("./layouts/admin-layout/admin-layout.module").then(
+            (m) => m.AdminLayoutModule
+          ),
+      },
+    ],
+  },
 ];
 
 @NgModule({

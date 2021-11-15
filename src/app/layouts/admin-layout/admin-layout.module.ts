@@ -12,14 +12,17 @@ import {MatInputModule} from '@angular/material/input';
 import {MatRippleModule} from '@angular/material/core';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatTooltipModule} from '@angular/material/tooltip';
-import {MatSelectModule} from '@angular/material/select';
+import { MatSelectModule } from '@angular/material/select';
+import { AddProductComponent } from 'app/add-product/add-product.component';
+import { EditproductComponent } from 'app/editproduct/editproduct.component';
+
 
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forChild(AdminLayoutRoutes),
     FormsModule,
     ReactiveFormsModule,
+    RouterModule.forChild(AdminLayoutRoutes),
     MatButtonModule,
     MatRippleModule,
     MatFormFieldModule,
@@ -31,10 +34,10 @@ import {MatSelectModule} from '@angular/material/select';
     DashboardComponent,
     UserProfileComponent,
     TableListComponent,
-    
-    
+    AddProductComponent,
+    EditproductComponent,
     MapsComponent,
-  ]
-})
 
+  ],
+})
 export class AdminLayoutModule {}
