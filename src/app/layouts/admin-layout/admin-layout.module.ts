@@ -15,10 +15,14 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import { MatSelectModule } from '@angular/material/select';
 import { AddProductComponent } from 'app/add-product/add-product.component';
 import { EditproductComponent } from 'app/editproduct/editproduct.component';
+import { OrdersComponent } from 'app/orders/orders.component';
+import { UsersComponent } from 'app/users/users.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
   imports: [
+    HttpClientModule,
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
@@ -37,8 +41,8 @@ import { EditproductComponent } from 'app/editproduct/editproduct.component';
     AddProductComponent,
     EditproductComponent,
     MapsComponent,
-    
-
+    UsersComponent,
+    OrdersComponent,
   ],
 })
 export class AdminLayoutModule {}

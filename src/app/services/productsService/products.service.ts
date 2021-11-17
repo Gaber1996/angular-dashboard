@@ -1,5 +1,6 @@
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient, HttpEvent, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { Form } from "@angular/forms";
 import { Iproduct } from "app/Models/product/iproduct";
 import { environment } from "environments/environment";
 import { Observable } from "rxjs";
@@ -16,15 +17,15 @@ export class ProductsService {
       headers: new HttpHeaders({
         "Content-Type": "application/json",
         authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiamFzbWluIiwidXNlcklkIjoiNjE4YzBkZmZhZThhYzM2MTUyNjY4ZGZhIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjM2OTk0ODIyLCJleHAiOjE2MzcwODEyMjJ9.QL6Uqx8RrPt8EtpqnotXTJtWcGZc0ZrB2goZ4I6-Dz0",
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiamFzbWluIiwidXNlcklkIjoiNjE4YzBkZmZhZThhYzM2MTUyNjY4ZGZhIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjM3MDgyODc2LCJleHAiOjE2MzcxNjkyNzZ9.UP-mV-02vipTWYmZeWtCh8ro2z0nK632nCNA4_-YGdE",
       }),
     };
 
     this.httpOptions1 = {
       headers: new HttpHeaders({
-        "Content-Type": ["image/jpeg", "image/png", "image/jpg", "image/ief"],
+        "Content-Type": "image/jpeg",
         authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiamFzbWluIiwidXNlcklkIjoiNjE4YzBkZmZhZThhYzM2MTUyNjY4ZGZhIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjM2OTk0ODIyLCJleHAiOjE2MzcwODEyMjJ9.QL6Uqx8RrPt8EtpqnotXTJtWcGZc0ZrB2goZ4I6-Dz0",
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiamFzbWluIiwidXNlcklkIjoiNjE4YzBkZmZhZThhYzM2MTUyNjY4ZGZhIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjM3MDgyODc2LCJleHAiOjE2MzcxNjkyNzZ9.UP-mV-02vipTWYmZeWtCh8ro2z0nK632nCNA4_-YGdE",
       }),
     };
   }
@@ -74,15 +75,32 @@ export class ProductsService {
     );
   }
 
-  upload(body: File): Observable<any> {
+  upload(body: FormData): Observable<any> {
     console.log("body", body);
     const formData = new FormData();
-    formData.append("image", body);
-
+    //  formData.append("image", body , body.name);
     return this.httpClient.post(
       ` ${environment.APIURL}/products/uploadImage`,
-      formData,
+      body,
       this.httpOptions1
     );
   }
+
+  // define function to upload files
+  upload1(formData: FormData): Observable<HttpEvent<string[]>> {
+    return this.httpClient.post<string[]>(`localhost:5000/api/v1/products/uploadImage`, formData, {
+      reportProgress: true,
+      observe: "events",
+      
+    });
+  }
+
+  // define function to download files
+  // download(filename: string): Observable<HttpEvent<Blob>> {
+  //   return this.http.get(`${this.server}/file/download/${filename}/`, {
+  //     reportProgress: true,
+  //     observe: "events",
+  //     responseType: "blob",
+  //   });
+  // }
 }

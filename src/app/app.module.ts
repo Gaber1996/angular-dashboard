@@ -27,7 +27,6 @@ import { NotfoundComponent } from './notfound/notfound.component';
     ComponentsModule,
     RouterModule,
     AppRoutingModule,
-    // NgbdModalBasic,
     NgbModule,
 
     AgmCoreModule.forRoot({

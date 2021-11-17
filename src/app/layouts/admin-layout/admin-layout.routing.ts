@@ -8,6 +8,8 @@ import { EditproductComponent } from "app/editproduct/editproduct.component";
 import { LoginComponent } from "app/login/login.component";
 import { AuthenticationGuard } from "app/guard/authentication.guard";
 import { LoginguardGuard } from "app/guard/loginguard.guard";
+import { UsersComponent } from "app/users/users.component";
+import { OrdersComponent } from "app/orders/orders.component";
 
 export const AdminLayoutRoutes: Routes = [
   // {
@@ -59,4 +61,6 @@ export const AdminLayoutRoutes: Routes = [
   { path: "addproduct", component: AddProductComponent ,canActivate: [AuthenticationGuard] },
   { path: "maps", component: MapsComponent ,canActivate: [AuthenticationGuard] },
   { path: "edit/:id", component: EditproductComponent  ,canActivate: [AuthenticationGuard]},
+  { path: "users", component: UsersComponent ,canActivate: [AuthenticationGuard]},
+  { path: "orders", component:OrdersComponent   ,canActivate: [AuthenticationGuard]},
 ];

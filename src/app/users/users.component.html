@@ -1,0 +1,55 @@
+<div class="container" style="margin-top: 20px;">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4>Upload and Download Files</h4>
+    </div><br>
+    <div class="panel-body">
+      <strong>Select files from your computer</strong>
+      <!-- <div *ngIf="fileStatus.status==='progress'">
+        <div class="progress">
+          <div [style.width.%]="fileStatus.percent" class="progress-bar progress-bar-animated bg-info"
+            role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+            {{ fileStatus.requestType }} {{ fileStatus.percent }}
+          </div>
+        </div>
+      </div>
+      <hr> -->
+
+      <form>
+      <!-- <form enctype="multipart/form-data"> -->
+          <div class="form-group">
+            <div>
+              <input type="file" (change)="onUploadFiles($event.target.files)" name="files" 
+                class="form-control" />
+            </div>
+          </div>
+
+          <!-- image -->
+          <div class="row">
+            <div class="col-lg-12  mb-4">
+              <input accept="image/*" id=" image"   name="image"
+                class="form-control form-control-lg fs-6 shadow-none " type="file" (change)="onUploadFiles($event.target.files)"
+                placeholder="Enter Your  Product  image" required>
+            
+            </div>
+          </div>
+      </form>
+
+
+
+      <br>
+
+      <!-- <div *ngIf="filenames?.length > 0" class="js-upload-finished">
+        <h3>Processed files</h3>
+        <div *ngFor="let filename of filenames" class="list-group">
+          <a (click)="onDownloadFile(filename)" class="list-group-item list-group-item-success"
+            style="cursor: pointer;">
+            {{ filename }}
+            <a class="alert-success float-right">Download</a>
+          </a><br>
+        </div>
+      </div> -->
+
+    </div>
+  </div>
+</div>

@@ -76,7 +76,7 @@
                                 <div class="col-lg-12  mb-4">
                                     <input accept="image/*"  id=" image" #imageInput="ngModel" [(ngModel)]=" prd.image" name="image"
                                         class="form-control form-control-lg fs-6 shadow-none " type="file"
-                                                          (change)="processFile(imageInput)"
+                                                          (change)="fileChange($event)"
 
                                         placeholder="Enter Your  Product  image" required>
                                     <div [hidden]='imageInput.valid || imageInput.untouched' class="fw-bold text-danger">
