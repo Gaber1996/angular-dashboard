@@ -12,20 +12,22 @@ export class ProductsService {
   //constructor
   private httpOptions = {};
   private httpOptions1 = {};
+  TcknfrmLocalStorage = localStorage
+    .getItem("token")
+    .slice(1, localStorage.getItem("token").length - 1);
+
   constructor(private httpClient: HttpClient) {
     this.httpOptions = {
       headers: new HttpHeaders({
         "Content-Type": "application/json",
-        authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiamFzbWluIiwidXNlcklkIjoiNjE4YzBkZmZhZThhYzM2MTUyNjY4ZGZhIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjM3MDgyODc2LCJleHAiOjE2MzcxNjkyNzZ9.UP-mV-02vipTWYmZeWtCh8ro2z0nK632nCNA4_-YGdE",
+        authorization: `Bearer ${this.TcknfrmLocalStorage}`,
       }),
     };
 
     this.httpOptions1 = {
       headers: new HttpHeaders({
         "Content-Type": "image/jpeg",
-        authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiamFzbWluIiwidXNlcklkIjoiNjE4YzBkZmZhZThhYzM2MTUyNjY4ZGZhIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjM3MDgyODc2LCJleHAiOjE2MzcxNjkyNzZ9.UP-mV-02vipTWYmZeWtCh8ro2z0nK632nCNA4_-YGdE",
+        authorization: `Bearer ${this.TcknfrmLocalStorage}`,
       }),
     };
   }
@@ -40,7 +42,7 @@ export class ProductsService {
 
   // getCountProducts() {}
 
-  getProductByID(prdID: number): Observable<Iproduct> {
+  getProductByID(prdID: string): Observable<Iproduct> {
     return this.httpClient.get<Iproduct>(
       environment.APIURL + "/products/" + prdID
     );
@@ -88,11 +90,14 @@ export class ProductsService {
 
   // define function to upload files
   upload1(formData: FormData): Observable<HttpEvent<string[]>> {
-    return this.httpClient.post<string[]>(`localhost:5000/api/v1/products/uploadImage`, formData, {
-      reportProgress: true,
-      observe: "events",
-      
-    });
+    return this.httpClient.post<string[]>(
+      `localhost:5000/api/v1/products/uploadImage`,
+      formData,
+      {
+        reportProgress: true,
+        observe: "events",
+      }
+    );
   }
 
   // define function to download files

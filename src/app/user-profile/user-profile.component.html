@@ -1,15 +1,15 @@
 <div class="main-content">
   <div class="container-fluid">
-      <div class="row">
-          <div class="col-md-8">
-              <div class="card">
-                  <div class="card-header card-header-warning">
-                      <h4 class="card-title">Edit Profile</h4>
-                      <p class="card-category">Complete your profile</p>
-                  </div>
-                  <div class="card-body">
-                      <form>
-<!-- 
+    <div class="row">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-header card-header-warning">
+            <h4 class="card-title">Edit Profile</h4>
+            <p class="card-category">Complete your profile</p>
+          </div>
+          <div class="card-body">
+            <form>
+              <!-- 
                           <div class="row">
                               <div class="col-md-6">
                                 <mat-form-field class="example-full-width">
@@ -22,120 +22,119 @@
                                 </mat-form-field>
                               </div>
                           </div> -->
-                          <div class="row">
-                              <div class="col-md-12">
-                                <mat-form-field class="example-full-width">
-                                  <input matInput placeholder="Name" type="text">
-                                </mat-form-field>
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="col-md-12">
-                                <mat-form-field class="example-full-width">
-                                  <input matInput placeholder="Email" type="text">
-                                </mat-form-field>
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="col-md-12">
-                                <mat-form-field class="example-full-width">
-                                  <input matInput placeholder="Role" type="text">
-                                </mat-form-field>
-                              </div>
-                          </div>
-                
-                          <div class="row">
-                            <div class="col-md-12  mb-4">
-                              <mat-form-field class="example-full-width">
-                              <input  matInput accept="image/*" id=" image" name="image"
-                                class="form-control form-control-lg  " type="file" 
-                                placeholder="" required>
-                                </mat-form-field>
-                            </div>
-                          </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Name" type="text">
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Email" type="text">
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Role" type="text">
+                  </mat-form-field>
+                </div>
+              </div>
 
-                          <button mat-raised-button type="submit" class="btn btn-warning pull-right">Update Profile</button>
-                          <div class="clearfix"></div>
-                      </form>
-                  </div>
+              <div class="row">
+                <div class="col-md-12  mb-4">
+                  <!-- <mat-form-field class="example-full-width"> -->
+                  <input matInput accept="image/*" id=" image" name="image" class="form-control form-control-lg  "
+                    type="file" placeholder="" required>
+                  <!-- </mat-form-field> -->
+                </div>
               </div>
+
+              <button mat-raised-button type="submit" class="btn btn-warning pull-right">Update Profile</button>
+              <div class="clearfix"></div>
+            </form>
           </div>
-          <div class="col-md-4">
-              <div class="card card-profile">
-                  <div class="card-avatar">
-                      <a href="javascript:void(0)">
-                          <img class="img" src="./assets/img/faces/marc.jpg" />
-                      </a>
-                  </div>
-                  <div class="card-body">
-                      <h6 class="card-category text-gray">{{admindata.role}}</h6>
-                      <h4 class="card-title">{{admindata.name}}</h4>
-                      <p class="card-description">
-                          Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
-                      </p>
-                      <a href="javascript:void(0)" class="btn btn-warning btn-round">Follow</a>
-                  </div>
-              </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card card-profile">
+          <div class="card-avatar">
+            <a href="javascript:void(0)">
+              <img src="https://via.placeholder.com/350x150">
+            </a>
           </div>
+          <div class="card-body">
+            <h6 class="card-category text-gray">{{admindata.role}}</h6>
+            <h4 class="card-title">{{admindata.name}}</h4>
+            <p class="card-description">
+              Don't be scared of the truth because we need to restart the human foundation in truth And I love you like
+              Kanye loves Kanye I love Rick Owens’ bed design but the back is...
+            </p>
+            <a href="javascript:void(0)" class="btn btn-warning btn-round">Follow</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-warning">
+            <h4 class="card-title ">Admins Table</h4>
+            <!-- <p class="card-category"> Here is a subtitle for this table</p> -->
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table">
+                <thead style="color:#000">
+                  <th>
+                    ID
+                  </th>
+                  <th>
+                    Name
+                  </th>
+                  <th>
+                    Role
+                  </th>
+                  <th>
+                    image
+                  </th>
+                  <th>
+                    Email
+                  </th>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let admin of   allAdmins; let i=index " class="fs-5 text-black">
+                    <td>
+                      {{i}}
+                    </td>
+                    <td>
+                      {{admin.name}}
+                    </td>
+                    <td class="text-primary">
+                      {{admin.role}}
+                    </td>
+                    <td style="width:10%">
+                      <img src=" {{admin.email}}">
+
+                    </td>
+                    <td>
+                      {{admin.email}}
+
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
       </div>
 
 
-          <div class="row">
-            <div class="col-md-12">
-              <div class="card">
-                <div class="card-header card-header-warning">
-                  <h4 class="card-title ">Products Table</h4>
-                  <!-- <p class="card-category"> Here is a subtitle for this table</p> -->
-                </div>
-                <div class="card-body">
-                  <div class="table-responsive">
-                    <table class="table">
-                      <thead style="color:#000">
-                        <th>
-                          ID
-                        </th>
-                        <th>
-                          Name
-                        </th>
-                        <th>
-                          Role
-                        </th>
-                        <th>
-                          image
-                        </th>
-                        <th>
-                          Email
-                        </th>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>
-                            {{singleusrata._id}}
-                          </td>
-                          <td>
-                            {{singleusrata.name}}
-                          </td>
-                          <td class="text-primary">
-                            {{singleusrata.role}}
-                          </td>
-                          <td style="width:10%">
-                            v
-                          </td>
-                          <td>
-                            {{singleusrata.email}}
-          
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-            </div>
-          
-          
-          </div>
+    </div>
   </div>
 </div>
-
-

@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Adminlogin } from 'app/Models/login/adminlogin';
-import { UserService } from 'app/services/user/user.service';
+import { Component, OnInit } from "@angular/core";
+import { Adminlogin } from "app/Models/login/adminlogin";
+import { UserService } from "app/services/user/user.service";
 
 @Component({
   selector: "app-user-profile",
@@ -9,10 +9,10 @@ import { UserService } from 'app/services/user/user.service';
 })
 export class UserProfileComponent implements OnInit {
   admindata: any = {};
-  singleusrata: any = {};
+  allAdmins: any = {};
   IDfrmLocalStorage = localStorage
     .getItem("userId")
-    .slice(1, localStorage.getItem("userId").length-1);
+    .slice(1, localStorage.getItem("userId").length - 1);
 
   constructor(private userAPI: UserService) {
     console.log("IDfrmLocalStorage", this.IDfrmLocalStorage);
@@ -35,22 +35,23 @@ export class UserProfileComponent implements OnInit {
       }
     );
 
-    this.userAPI.getSingleUser(this.IDfrmLocalStorage).subscribe(
-      (res) => {
-        console.log(res);
-        this.singleusrata = res.user;
-        // console.log("this.admindata", this.admindata);
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
-  }
+    //   this.userAPI.getSingleUser(this.IDfrmLocalStorage).subscribe(
+    //     (res) => {
+    //       console.log(res);
+    //       this.allAdmins = res.user;
+    //       // console.log("this.admindata", this.admindata);
+    //     },
+    //     (err) => {
+    //       console.log(err);
+    //     }
+    //   );
+    // }
 
-  getSingleUser() {
-    this.userAPI.showCurrentUser().subscribe(
+    this.userAPI.getAllAdmins().subscribe(
       (res) => {
-        console.log(res);
+        console.log("resadmins", res);
+        this.allAdmins = res.users;
+        // console.log("this.admindata", this.admindata);
       },
       (err) => {
         console.log(err);

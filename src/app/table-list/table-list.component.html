@@ -40,7 +40,8 @@
                                     </th>
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let product of productList.products; let i=index ">
+                                    <tr *ngFor="let product of productList.products; let i=index "
+                                        class="fs-6 text-black">
                                         <td>
                                             {{i+1}}
                                         </td>
@@ -60,9 +61,8 @@
                                             {{product?.company}}
                                         </td>
                                         <td>
-                                            <button type="button" class="btn  btn-warning  "
-                                                data-bs-toggle="modal" data-bs-target="#staticBackdrop"
-                                                (click)="ProductDetails(product._id)">
+                                            <button type="button" class="btn  btn-warning  " data-bs-toggle="modal"
+                                                data-bs-target="#staticBackdrop" (click)="ProductDetails(product._id)">
                                                 Details
                                             </button>
                                             <!-- <button mat-button color="accent">Accent</button>
@@ -143,16 +143,24 @@
 
                                         </td>
                                         <td>
-                                            <a class="btn  btn-warning" [routerLink]="['/edit',product.id]">Edit</a>
+                                            <!-- <a class="btn  btn-warning" [routerLink]="['/edit',product.id]">Edit</a> -->
+
+                                            <a mat-raised-button type="button" [routerLink]="['/edit',product.id]"
+                                                matTooltip="Edit Task" [matTooltipPosition]="'above'"
+                                                class="btn btn-primary btn-link btn-sm btn-just-icon fs-2">
+                                                <i class="material-icons fs-2">edit</i>
+                                            </a>
                                         </td>
 
                                         <td>
                                             <!-- tets -->
                                             <!-- button -->
-                                            <button type="button" id={{product.id}}
-                                                class="btn   btn-danger  " data-bs-toggle="modal"
-                                                data-bs-target="#DeleteModal" (click)="sendID(product.id)">
-                                                Delete Product
+                                            <button mat-raised-button type="button" id={{product.id}}
+                                                data-bs-toggle="modal" data-bs-target="#DeleteModal"
+                                                (click)="sendID(product.id)" matTooltip="Remove Task"
+                                                [matTooltipPosition]="'above'"
+                                                class="btn btn-danger btn-link btn-sm btn-just-icon fs-2">
+                                                <i class="material-icons fs-2">close</i>
                                             </button>
 
                                             <!-- <input type="button" class="btn btn-dark btn-lg-dark ms-3 p-1 " data-bs-toggle="modal" data-bs-target="#DeleteModal"
