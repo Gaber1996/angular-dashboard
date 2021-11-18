@@ -1,0 +1,347 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-warning">
+                        <h4 class="card-title ">Products Table</h4>
+                        <!-- <p class="card-category"> Here is a subtitle for this table</p> -->
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead style="color:#000">
+                                    <th>
+                                        ID
+                                    </th>
+                                    <th>
+                                        Name
+                                    </th>
+                                    <th>
+                                        price
+                                    </th>
+                                    <th>
+                                        image
+                                    </th>
+                                    <th>
+                                        category
+                                    </th>
+                                    <th>
+                                        company
+                                    </th>
+                                    <th>
+                                        Details
+                                    </th>
+                                    <th>
+                                        Edit
+                                    </th>
+                                    <th>
+                                        Delete
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let product of productList.products; let i=index "
+                                        class="fs-6 text-black">
+                                        <td>
+                                            {{i+1}}
+                                        </td>
+                                        <td>
+                                            {{product?.name}}
+                                        </td>
+                                        <td class="text-dark">
+                                            {{product?.price}}$
+                                        </td>
+                                        <td style="width:10%">
+                                            <img [src]="product?.image" alt="" class="w-50">
+                                        </td>
+                                        <td>
+                                            {{product?.category}}
+                                        </td>
+                                        <td>
+                                            {{product?.company}}
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn  btn-warning  " data-bs-toggle="modal"
+                                                data-bs-target="#staticBackdrop" (click)="ProductDetails(product._id)">
+                                                Details
+                                            </button>
+                                            <!-- <button mat-button color="accent">Accent</button>
+                                            <i class="large material-icons">ac_unit</i> -->
+
+                                            <!-- test modal -->
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
+                                                data-bs-keyboard="false" tabindex="-1"
+                                                aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                                <div class="modal-dialog ">
+
+
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="staticBackdropLabel">Cart</h5>
+                                                            <button type="button" class="btn-close"
+                                                                data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+
+
+                                                        <div class="modal-body position-relative ">
+
+                                                            <!--  -->
+
+                                                            <div class="HomePage-img  mb-5">
+                                                                <div class="  justify-content-center  ">
+
+                                                                    <div ngModelChange
+                                                                        class="itm HomePage-imgElement  card w-100 ">
+                                                                        <a href=""><img [src]="prd2?.image" alt="..."
+                                                                                class="w-100   "></a>
+                                                                        <div class="card-body">
+
+                                                                            <!-- name -->
+                                                                            <span class="fs-6  fw-bold text-dark">Name :
+                                                                            </span>
+                                                                            <div class="name d-inline-block text-truncate"
+                                                                                style="max-width: 100px;">
+                                                                                {{prd2?.name}}</div>
+                                                                            <!-- price -->
+
+                                                                            <div>
+                                                                                <span
+                                                                                    class="fs-6  fw-bold text-dark">Price
+                                                                                    :</span>
+                                                                                {{prd2?.price| currency:"USD"
+                                                                                :'symbol'}}
+
+                                                                            </div>
+                                                                            <!-- description -->
+                                                                            <span
+                                                                                class="fs-6  fw-bold text-dark">description
+                                                                                : </span>
+                                                                            <div class="description ">
+                                                                                {{prd2?.description}}
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+
+
+
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-default"
+                                                                data-bs-dismiss="modal">Close</button>
+                                                            <button type="button" class="btn btn-primary">Check
+                                                                Out</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- test modal -->
+
+                                        </td>
+                                        <td>
+                                            <!-- <a class="btn  btn-warning" [routerLink]="['/edit',product.id]">Edit</a> -->
+
+                                            <a mat-raised-button type="button" [routerLink]="['/edit',product.id]"
+                                                matTooltip="Edit Task" [matTooltipPosition]="'above'"
+                                                class="btn btn-primary btn-link btn-sm btn-just-icon fs-2">
+                                                <i class="material-icons fs-2">edit</i>
+                                            </a>
+                                        </td>
+
+                                        <td>
+                                            <!-- tets -->
+                                            <!-- button -->
+                                            <button mat-raised-button type="button" id={{product.id}}
+                                                data-bs-toggle="modal" data-bs-target="#DeleteModal"
+                                                (click)="sendID(product.id)" matTooltip="Remove Task"
+                                                [matTooltipPosition]="'above'"
+                                                class="btn btn-danger btn-link btn-sm btn-just-icon fs-2">
+                                                <i class="material-icons fs-2">close</i>
+                                            </button>
+
+                                            <!-- <input type="button" class="btn btn-dark btn-lg-dark ms-3 p-1 " data-bs-toggle="modal" data-bs-target="#DeleteModal"
+                                                value=" Delete Product" [(ngModel)]="product.id" /> -->
+
+
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="DeleteModal" data-bs-backdrop="static"
+                                                data-bs-keyboard="false" tabindex="-1"
+                                                aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="staticBackdropLabel">Cart</h5>
+                                                            <button type="button" class="btn-close"
+                                                                data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+
+                                                            <!--  -->
+                                                            <div>Are you sure you want to delete this product?</div>
+                                                            <button type="button" class="btn btn-dark btn-lg-dark  p-2 "
+                                                                (click)="DeleteProduct(DeleteID)">
+                                                                OK
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-default"
+                                                                data-bs-dismiss="modal"
+                                                                (click)=" reload()">Close</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- tets -->
+                                        </td>
+
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- <div class="col-md-12">
+              <div class="card card-plain">
+                  <div class="card-header card-header-warning">
+                      <h4 class="card-title mt-0"> Table on Plain Background</h4>
+                      <p class="card-category"> Here is a subtitle for this table</p>
+                  </div>
+                  <div class="card-body">
+                      <div class="table-responsive">
+                          <table class="table table-hover">
+                              <thead class="">
+                                  <th>
+                                      ID
+                                  </th>
+                                  <th>
+                                      Name
+                                  </th>
+                                  <th>
+                                      Country
+                                  </th>
+                                  <th>
+                                      City
+                                  </th>
+                                  <th>
+                                      Salary
+                                  </th>
+                              </thead>
+                              <tbody>
+                                  <tr>
+                                      <td>
+                                          1
+                                      </td>
+                                      <td>
+                                          Dakota Rice
+                                      </td>
+                                      <td>
+                                          Niger
+                                      </td>
+                                      <td>
+                                          Oud-Turnhout
+                                      </td>
+                                      <td>
+                                          $36,738
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td>
+                                          2
+                                      </td>
+                                      <td>
+                                          Minerva Hooper
+                                      </td>
+                                      <td>
+                                          Curaçao
+                                      </td>
+                                      <td>
+                                          Sinaai-Waas
+                                      </td>
+                                      <td>
+                                          $23,789
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td>
+                                          3
+                                      </td>
+                                      <td>
+                                          Sage Rodriguez
+                                      </td>
+                                      <td>
+                                          Netherlands
+                                      </td>
+                                      <td>
+                                          Baileux
+                                      </td>
+                                      <td>
+                                          $56,142
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td>
+                                          4
+                                      </td>
+                                      <td>
+                                          Philip Chaney
+                                      </td>
+                                      <td>
+                                          Korea, South
+                                      </td>
+                                      <td>
+                                          Overland Park
+                                      </td>
+                                      <td>
+                                          $38,735
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td>
+                                          5
+                                      </td>
+                                      <td>
+                                          Doris Greene
+                                      </td>
+                                      <td>
+                                          Malawi
+                                      </td>
+                                      <td>
+                                          Feldkirchen in Kärnten
+                                      </td>
+                                      <td>
+                                          $63,542
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td>
+                                          6
+                                      </td>
+                                      <td>
+                                          Mason Porter
+                                      </td>
+                                      <td>
+                                          Chile
+                                      </td>
+                                      <td>
+                                          Gloucester
+                                      </td>
+                                      <td>
+                                          $78,615
+                                      </td>
+                                  </tr>
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+          </div> -->
+        </div>
+    </div>
+</div>

@@ -1,0 +1,10 @@
+
+<!-- <div *ngIf="(router.url !== '/login')">
+    <notfound></notfound>
+</div> -->
+<div *ngIf="(router.url== '/login')else finish">
+    <login></login>
+</div>
+<ng-template #finish><router-outlet></router-outlet> </ng-template>
+
+<!-- <router-outlet></router-outlet> -->

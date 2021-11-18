@@ -1,0 +1,68 @@
+<div class="main-content">
+  <div class="container-fluid">
+
+
+    <div class="row">
+      <div class="col-md-8 mx-auto">
+        <div class="card">
+          <div class="card-header card-header-warning">
+            <h4 class="card-title ">Users Table</h4>
+            <!-- <p class="card-category"> Here is a subtitle for this table</p> -->
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table">
+                <thead style="color:#000">
+                  <th>
+                    ID
+                  </th>
+                  <th>
+                    Name
+                  </th>
+                  <th>
+                    Email
+                  </th>
+                  <!-- <th>
+                    Edit
+                  </th>
+                  <th>
+                    Delete
+                  </th> -->
+                </thead>
+                <tbody>
+                  <tr *ngFor="let user of   UsersList; let i=index " class="fs-5 text-black">
+                    <td>
+                      {{i}}
+                    </td>
+                    <td>
+                      {{user.name}}
+                    </td>
+                    <td>
+                      {{user.email}}
+                    </td>
+                    <!-- (click)="ProductDetails(product._id)" -->
+                    <!-- <td>
+                      <button type="button" class="btn  btn-warning  ">
+                        Edit
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="btn  btn-warning  ">
+                       Delete
+                      </button>
+                    </td> -->
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+
+  </div>
+</div>

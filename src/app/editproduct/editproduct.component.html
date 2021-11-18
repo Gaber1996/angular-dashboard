@@ -1,0 +1,157 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-warning">
+                        <h4 class="card-title ">Edit Products </h4>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- ADD PRODUCT  -->
+
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="contact form">
+                        <form action="" #prdForm="ngForm" (ngSubmit)="EditProduct(id,prd)">
+
+                            <!-- name -->
+                            <div class="row">
+                                <div class="col-lg-12  mb-4">
+                                    <label>Product Name</label>
+                                    <input id=" Name" #prdname="ngModel" [(ngModel)]=" prd.name" name="Name"
+                                        class="form-control form-control-lg fs-6 shadow-none " type="text"
+                                        placeholder="Enter Your  Product  Name" value="{{this.prd2.name}}" required>
+                                    <div [hidden]='prdname.valid || prdname.untouched' class="fw-bold text-danger">
+                                        Product Name is
+                                        required</div>
+                                </div>
+                            </div>
+
+                            <!-- price -->
+                            <div class="row">
+                                <div class="col-lg-12  mb-4">
+                                    <label>Product Price</label>
+
+                                    <input id=" Price" [(ngModel)]=" prd.price" name=" Price"
+                                        class="form-control form-control-lg fs-6 shadow-none " type="number"
+                                        placeholder="Enter Your  Product Price" value="{{this.prd2.price}}"
+                                        #prdprice="ngModel" required>
+                                    <div [hidden]='prdprice.valid || prdprice.untouched' class="fw-bold text-danger">
+                                        Product Price
+                                        is required</div>
+                                </div>
+                            </div>
+
+
+                            <!-- company -->
+                            <div class="row">
+                                <div class="col-lg-12  mb-4">
+                                    <label>Product Company</label>
+
+                                    <input id=" company" #prdcompany="ngModel" [(ngModel)]=" prd.company" name="Name"
+                                        class="form-control form-control-lg fs-6 shadow-none " type="text"
+                                        placeholder=" ikea or liddy or marcos" value="{{this.prd2.company}}" required>
+                                    <div [hidden]='prdcompany.valid || prdcompany.untouched'
+                                        class="fw-bold text-danger">
+                                        Product Company is
+                                        required</div>
+                                </div>
+                            </div>
+
+
+
+                            <!--  description -->
+                            <div class="row">
+                                <div class="col-lg-12  mb-4">
+                                    <label> Product description</label>
+                                    <input type="text" id=" " [(ngModel)]=" prd.description" name="description"
+                                        class="form-control form-control-lg fs-6 shadow-none "
+                                        placeholder="Enter Your  Product description" #prddescription="ngModel"
+                                        value="{{this.prd2.description}}">
+                                    <div [hidden]='prddescription.valid || prddescription.untouched'
+                                        class="fw-bold text-danger"> Product
+                                        description is required</div>
+                                </div>
+                            </div>
+
+
+                            <!-- image -->
+                            <div class="row">
+                                <div class="col-lg-12  mb-4">
+                                    <input accept="image/*" id=" image" #imageInput="ngModel" [(ngModel)]=" prd.image"
+                                        name="image" class="form-control form-control-lg fs-6 shadow-none " type="file"
+                                        placeholder="Enter Your  Product  image" required>
+                                    <div [hidden]='imageInput.valid || imageInput.untouched'
+                                        class="fw-bold text-danger">
+                                        Product image is
+                                        required</div>
+                                </div>
+                            </div>
+
+
+                            <!-- product Image -->
+                            <!-- <div class="row">
+<div class="col-lg-12  mb-4">
+<label for="imgURL"> Product Image</label>
+<input id="imgURL " [(ngModel)]=" prd.imgURL" name="imgURL"
+class="form-control form-control-lg fs-6 shadow-none " type="text"
+placeholder="Enter Your  Product imgURL">
+</div>
+</div> -->
+
+
+                            <!-- dynmic cat -->
+                            <!-- <select id="mainGroupSelectEdit" class="form-control dash-form-control select2"
+style="width: 100%;" data-minimum-results-for-search="Infinity" name="mainGroupSelectEdit"
+name="catID" id=" " [(ngModel)]=" prd.Categoryid">
+<option [ngValue]="null">-/-</option>
+<option *ngFor="let cat of catList" [value]="cat.id">{{cat.Name}}</option>
+</select> -->
+
+                            <!--  category -->
+                            <div class="row">
+                                <div class="col-lg-12  mb-4">
+                                    <label> Product category</label>
+                                    <input type="text" id=" " [(ngModel)]=" prd.category" name="category"
+                                        class="form-control form-control-lg fs-6 shadow-none "
+                                        placeholder=" office or kitchen or bedroom" #prdcategory="ngModel"
+                                        value="{{this.prd2.category}}">
+                                    <div [hidden]='prdcategory.valid || prdcategory.untouched'
+                                        class="fw-bold text-danger"> Product
+                                        category is required</div>
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-lg-12  mb-4">
+                                    <button id="" class="btn btn-dark me-4" type="submit"
+                                        [disabled]="prdForm.invalid">Edit
+                                        Product</button>
+
+                                    <button class="btn  btn-danger" [routerLink]="['/dashboard']">Cancel</button>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-12  mb-4">
+
+                                    <button class="btn  btn-warning" [routerLink]="['/dashboard']">Cancel</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+
+        </div>
+    </div>
+</div>
